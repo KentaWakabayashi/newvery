@@ -1,24 +1,29 @@
-# README
+## photo.com in the worl
+## サイト概要
+投稿者が旅行で実際に訪れた世界各地の写真を投稿することができ、コメントやいいねができるsns型写真投稿アプリケーション。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+（投稿者は自分自身のスマホやカメラで撮った写真を投稿） （旅行の計画をされている方や投稿写真に興味を持たれた方は投稿者とコメントなどを通し情報交換できる） （投稿目的だけでなく閲覧のみも可能） （サイトやホームページに他者が掲載している写真は引用禁止）
 
-Things you may want to cover:
+## サイトテーマ
+「自分が実際に訪れ、自分が撮影した思い出の写真を共有しよう」
 
-* Ruby version
+自分自身が訪れたことがある場所で自分自身が撮影した写真を投稿し、その場所の風景や人々、食事など様々な写真を投稿しシェアし、他ユーザーの投稿写真も拝見しイイねやコメントを交換し合うことで旅行の計画を予定してる方や、逆に旅行に行ったことがない方も投稿写真を見ることによって旅行に興味を持ち、その後実際に旅をすることによってそのユーザーが旅の投稿をするという投稿型SNSアプリケーションにしたいです。
 
-* System dependencies
+## テーマを選んだ理由
+旅行が趣味で現状コロナで旅行がいけないので, 行けない方も多いと思うのでみんなでシェアして旅行の気分を味わえるサイトにしたい。
 
-* Configuration
+## ターゲットユーザ
+実際に世界各地を訪れ旅行をし、その風景や景色、食事などを自分自身で撮影している方とこれから旅行を検討されている方で投稿された写真を参考に計画されたい方とコロナで旅行に行けない方で投稿された写真を見て旅行に行ってるかのような気分を味わいたい方
 
-* Database creation
+## 主な利用シーン
+旅行の思い出を自分だけでなく他のユーザーに共有したい時 旅行を計画されており、投稿を見て参考にされたい時 旅行に行けないのでstay home中に投稿を見て旅行気分を味わいたい時
 
-* Database initialization
+## 機能一覧
+https://docs.google.com/spreadsheets/d/1TySJ9k23TJpfEqVUH4Jyi1tZC5I5r_0-1uaPFcgx1a0/edit#gid=0
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+OS：Linux(CentOS)
+言語：HTML,CSS,JavaScript,Ruby,SQL
+フレームワーク：Ruby on Rails
+JS ライブラリ：jQuery
+IDE：Cloud9
