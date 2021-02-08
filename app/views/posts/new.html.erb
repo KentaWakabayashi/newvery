@@ -1,8 +1,41 @@
-<h1>Post form</h1>
-<%= form_with model: @post, local:true do |f| %>
-  <h4>photo</h4>
-  <%= f.attachment_field :post_image %>
-  <h4>text</h4>
-  <%= f.text_area :text %>
-  <%= f.submit 'Post' %>
-<% end %>
+<section class="slice sct-color-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 post_image_form">
+            <div class="section-title-wrapper style-1 v1">
+              <h3 class="section-title section-title-sm left">
+                <h1>POST FORM</h1>
+              </h3>
+            </div>
+
+          <%= form_with model: @post, local:true do |f| %>
+                <h4>PHOTO</h4>
+                <%= f.attachment_field :post_image %>
+                <h4>TEXT</h4>
+                <%= f.text_area :text %>
+                <%= f.submit 'Post' %>
+              <% end %>
+
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
