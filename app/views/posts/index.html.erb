@@ -1,0 +1,21 @@
+<div class="container">  <!-- この行を追加 -->
+  <div class="row">
+    <div class="col-md-3" >
+
+
+        <h1>Posts</h1>
+        <% @posts.each do |post| %>
+        <div>
+          <%= attachment_image_tag post, :post_image %>
+          <p>post image：<%= image_tag('no-image.jpg') %></p>
+
+          <p>text：<%= post.text %></p>
+          <p>user name：<%= post.user.name %></p>
+        </div>
+        <% end %>
+
+           </div>
+             </div>
+               </div>
+                 </div>
+                   </div>

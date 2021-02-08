@@ -1,0 +1,8 @@
+<h1>Post form</h1>
+<%= form_with model: @post, local:true do |f| %>
+  <h4>photo</h4>
+  <%= f.attachment_field :post_image %>
+  <h4>text</h4>
+  <%= f.text_area :text %>
+  <%= f.submit 'Post' %>
+<% end %>
