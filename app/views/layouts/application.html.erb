@@ -26,16 +26,19 @@
                 <span class="fas fa-home nav-link text-light" aria-hidden="true">Post</span>
               <% end %>
             </li>
-            <li>
-              <%= link_to users_path do %>
-                <span class="fas fa-users nav-link text-light" aria-hidden="true"> Users</span>
-              <% end %>
-            </li>
+
             <li>
               <%= link_to new_post_path do%>
                 <span class="fas fa-book-open nav-link text-light" aria-hidden="true"> NewPost</span>
               <% end %>
             </li>
+
+            <li>
+              <%= link_to user_path [:id] do %>
+                <span class="fas fa-users nav-link text-light" aria-hidden="true"> MyPage</span>
+              <% end %>
+            </li>
+
 
             <li>
               <%= link_to destroy_user_session_path, method: :delete do%>

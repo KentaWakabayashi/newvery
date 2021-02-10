@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "users/withdrawal" => "users#withdrawal"
   patch "users/withdrawal" => "users#withdrawal"
 
-  resources :users,only: [:new, :show, :index, :edit, :destroy, :update] do
+  resources :users,only: [:new, :show, :edit, :destroy, :update] do
   resource :relationships, only:[:create, :destroy]
     get 'follower' => 'relationships#follower', as: 'follower'
     get 'followed' => 'relationships#followed', as: 'followed'

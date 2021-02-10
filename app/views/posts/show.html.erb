@@ -2,36 +2,110 @@
 
 
 
-<div class="comments">
-<p>コメント件数：<%= @post.post_comments.count %></p>
-<% @post.post_comments.each do |post_comment| %>
-  <p><%= attachment_image_tag post_comment.user, :profile_image_id, :fill, 60, 60, fallback: "no-image.jpg" %></p>
-  <%= post_comment.user.name %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-  <% if post_comment.user == current_user %>
-  <div class="comment-delete">
-    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-  </div>
-  <% end %>
+
+
+
+<section class="sct-color-1 slice">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 posts_container">
+        <div class="post-item">
+
+  　 <div class="post-meta-top">
+    　 <div class="post-image">
+      　 <%= attachment_image_tag @post, :post_image, :fill, 700, 500 %>
+    　 </div>
+  　 </div>
+    <div class="post-content">
+
+             <i class="fa fa-user"></i>By<a href="#">
+             <%= @post.user.name %></a>
+          </li>
+          <li>
+            <i class="fa fa-calendar"></i><%= @post.created_at.strftime('%Y/%m/%d') %>
+          </li>
+
+          <% if @post.favorited_by?(current_user) %>
+              <li>
+                  <%= link_to post_favorites_path(@post), method: :delete do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= @post.favorites.count %> いいね
+                  <% end %>
+              </li>
+              <% else %>
+              <li>
+                  <%= link_to post_favorites_path(@post), method: :post do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <%= @post.favorites.count %> いいね
+                  <% end %>
+              </li>
+              <% end %>
+
+
+
+
+
+          <li>
+           <i class="fa fa-comment"></i>
+           <a href="#comments"><%= @post.post_comments.count %></a>
+            </li>
+                <li>
+      <% if @post.user == current_user %>
+  <%= link_to "削除", post_path(@post), method: :delete %>
+<% end %>
+    </li>
+        </ul>
+        <div class="post-content-inner mt-20">
+            <p><%= @post.text %></p>
+        </div>
+      </div>
+
+          <div class="comment-list bt style-2" id="comments">
+            <div class="float-wrapper">
+              <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+            </div>
+            <ol>
+         <% @post.post_comments.each do |post_comment| %>
+        <li class="comment">
+            <div class="comment-body bb">
+                <div class="comment-avatar">
+                    <div class="avatar">
+                       <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %>
+                    </div>
+                </div>
+                <div class="comment-text">
+                    <div class="comment-author clearfix">
+                        <a href="#" class="link-author"><%= post_comment.user.name %></a>
+                        <span class="comment-meta">
+                        <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+                        </span>
+                    </div>
+                    <div class="comment-entry"><%= post_comment.comment %></div>
+                </div>
+            </div>
+        </li>
+    <% end %>
+            </ol>
+          </div>
+          <hr>
+
+          <!-- Add comment section -->
+          <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+            <h3 class="section-title left">
+              <span>Comment</span>
+            </h3>
+          </div>
+<%= form_for [@post, @post_comment] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        </div>
+    </div>
+    <%= f.submit "Send", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 <% end %>
 
-<% if @post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-</div>
-<div class="new-comment">
-<%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,11 @@
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+ <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image.jpg"  %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "Profile Edit", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
 <div class="card-list-containar py-5">
   <% @posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
