@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NEWVERY</title>
+    <title>N E W V E R Y</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,63 +13,71 @@
 
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a>NEWVERY</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="container"style="color: gray;">
+      <a>N E W V E R Y</a>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
       <% if user_signed_in? %>
 
-               <li>
-              <%= link_to posts_path(current_user.id) do %>
-                <span class="fas fa-home nav-link text-light" aria-hidden="true">Post</span>
+
+
+            <li>
+              <%= link_to posts_path do %>
+                <span class="far fa-images nav-link text-dark" aria-hidden="true"> </span>
+              <% end %>
+
+            <li>
+              <%= link_to top_about_path do%>
+                <span class="fas fa-link nav-link text-dark" aria-hidden="true"> </span>
+
               <% end %>
             </li>
 
             <li>
               <%= link_to new_post_path do%>
-                <span class="fas fa-book-open nav-link text-light" aria-hidden="true"> NewPost</span>
+                <span class="fas fa-camera-retro nav-link text-dark" aria-hidden="true"> </span>
               <% end %>
             </li>
 
             <li>
-              <%= link_to user_path [:id] do %>
-                <span class="fas fa-users nav-link text-light" aria-hidden="true"> MyPage</span>
+              <%= link_to user_path(current_user.id) do %>
+                <span class="fas fa-user nav-link text-dark" aria-hidden="true"> </span>
               <% end %>
             </li>
 
 
             <li>
               <%= link_to destroy_user_session_path, method: :delete do%>
-                <span class="fas fa-sign-out-alt nav-link text-light" aria-hidden="true"> logout</span>
+                <span class="fas fa-sign-out-alt nav-link text-dark" aria-hidden="true"> </span>
               <% end %>
               </li>
 
-          <% else %>
-            <li>
-              <%= link_to root_path do%>
-                <span class="fas fa-home nav-link text-light" aria-hidden="true">TOP</span>
 
-              <% end %>
-            </li>
+
+          <% else %>
+
             <li>
               <%= link_to top_about_path do%>
-                <span class="fas fa-link nav-link text-light" aria-hidden="true">About</span>
+                <span class="fas fa-link nav-link text-dark" aria-hidden="true">About</span>
 
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path do%>
-                <span class="fas fa-user-plus nav-link text-light" aria-hidden="true">Sign Up</span>
+                <span class="fas fa-user-plus nav-link text-dark" aria-hidden="true">Sing up</span>
 
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_session_path do%><span class="fas fa-sign-in-alt nav-link text-light" aria-hidden="true">Login</span>
+              <%= link_to new_user_session_path do%><span class="fas fa-sign-in-alt nav-link text-dark" aria-hidden="true">Log in</span>
 
             <% end %>
             </li>
+
+
+
           <% end %>
 
           </ul>
@@ -89,9 +97,9 @@
     </body>
 
     <footer>
-      <div class='container'>
-        <div class='row'>
-           <div class='col-xs-12 col-xs-offset-9'>
+
+        <div class='row-center'>
+           <div class='col-xs-6 col-xs-offset-9'>
                <p>CopyRight Infratop.inc</p>
       </div>
     </div>
@@ -99,6 +107,7 @@
 </footer>
 
 </html>
+
 
 
 

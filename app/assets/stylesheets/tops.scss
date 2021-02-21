@@ -1,3 +1,27 @@
 // Place all the styles related to the tops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top-back-image{
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+ background-image: url("top3.jpg");
+ width:100%;                                            /* 横幅のサイズを指定    */
+ height:700px;                                          /* 縦幅のサイズを指定    */
+
+}
+.h1{
+
+  font: inherit;
+  color: pink;
+}
+
+.about-image{
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+ background-image: url("new.jpg");
+ width:100%;                                            /* 横幅のサイズを指定    */
+ height:700px;                                          /* 縦幅のサイズを指定    */
+
+}

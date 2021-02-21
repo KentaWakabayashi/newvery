@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-8 offset-md-1 mx-auto">
+      <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, class: "search-input" %>
+        <%= f.select :model, {'User':"1", 'Post':"2"} %>
+        <%= f.select :search, {'Perfect matching':"perfect_match", 'partial_matching':"partial match",'forward matching':"forward_match",'backward matching':"backward_match"} %>
+
+        <%= f.submit "Search", class: "search-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

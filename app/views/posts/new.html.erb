@@ -1,30 +1,32 @@
-<section class="slice sct-color-1">
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-md-12">
-
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 post_image_form">
-            <div class="section-title-wrapper style-1 v1">
-              <h3 class="section-title section-title-sm left">
-                <h1>POST FORM</h1>
-              </h3>
-            </div>
-
-          <%= form_with model: @post, local:true do |f| %>
-                <h4>PHOTO</h4>
-                <%= f.attachment_field :post_image %>
-                <h4>TEXT</h4>
-                <%= f.text_area :text %>
-                <%= f.submit 'Post' %>
+        <div class="section-title-wrapper style-1 v1 mx-auto" >
+        <h3 class="section-title section-title-sm left">
+            <div class="col-md-6 col-md-offset-3 post_image_form-center" >
+            <h1>POSTFORM</h1>
+        </h3>
+<% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+        <% @post.errors.full_messages.each do |message| %>
+            <%= message %>
               <% end %>
+<% end %>
+<%= form_with model: @post, local:true do |f| %>
+    <h4>ADDRESS📍</h4>
+        <%= f.text_field :address, placeholder: "住所",size:50 %>
+          <h4>PHOTO</h4>
+              <%= f.attachment_field :post_images_images, multiple: true %>
+                  <h4>TEXT🗒</h4>
+                      <%= f.text_area :text %>
+                          <%= f.submit 'Post' %>
+ <% end %>
 
-                   </div>
-                </div>
               </div>
-            </div>
           </div>
-        </section>
+     </div>
+</div>
+
+
 
 
 

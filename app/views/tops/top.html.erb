@@ -1,11 +1,31 @@
-<div class="container">
-<div class="row">
-          <div class='top-message col-md-offset-3 col-md-6'>
-            <h1><span class='fas fa-book'><strong>NEWVERY</strong>  </h1>
-                  <p>Hi Everyone.Welcome to<span class='fas fa-book'></span><strong>  NEWVERY  </strong></p>
-                  <p>Post the best one and share your memories.</p>
-                  <p>Let's start!!!!!</p>
-                  
-                  
-                  
-                  
+
+<div class="top-back-image">
+<div class="container" >
+
+  <div class="row justify-content-center"style="padding-top: 300px; color: gray; ";>
+
+      <h1>
+          <font size="7">NEWVERY</font>
+          </h1>
+     </div>
+     <div class="row" >
+         <div class="col-1" >
+             <%= link_to "SIGNUP",new_user_registration_path, class: "btn btn-outline-light" %>
+             </div>
+             <div class="col-3" >
+                 <%= link_to "LOGIN",new_user_session_path, class: "btn btn-outline-light" %>
+             </div>
+
+         </div>
+         <div class="row" >
+         <div class="col-2 my-3" >
+
+                 <%= link_to 'GEST', tops_guest_sign_in_path, method: :post, class: "btn btn-outline-light"%>
+             </div>
+
+</div>
+
+ </div>
+
+
+

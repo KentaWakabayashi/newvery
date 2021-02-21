@@ -17,3 +17,74 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+
+textarea {
+  resize: none;
+  width:300px;
+  height:200px;
+}
+
+ .textfield {
+  resize: none;
+  width:300px;
+
+}
+
+.inview {
+ background-image:url("in.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+ width:100%;                                            /* 横幅のサイズを指定    */
+ height:700px;
+
+
+}
+
+.inview2 {
+ background-image:url("in.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+ width:100%;                                            /* 横幅のサイズを指定    */
+ height:700px;
+
+
+}
+
+
+.profile-container-center{
+
+
+}
+.profile-image{
+display:flex;
+justify-content: flex-start;
+align-items: flex-end;
+}
+
+.profile-text{
+ justify-content: flex-end;
+ width: 60%;
+ text-align: center;
+ align-items: flex-end;
+
+}
+
+.image-pic{
+ width: 60%;
+ text-align: center;
+
+
+}
+
+
+img {
+    border: 3px solid;
+    color: gray;
+}
+
+.table-info, .table-info > th, .table-info > td{
+ background-color: white;
+ border-collapse: collapse;
+}

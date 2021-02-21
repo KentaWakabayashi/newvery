@@ -1,0 +1,960 @@
+
+
+<table class='table'>
+
+                                                  <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+
+                                             <% @post.post_comments.each do |post_comment| %>
+                                             <tr>
+
+                                             <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <tb><% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %><tb>
+                                                    </tr>
+                                                    <% end %>
+
+
+                                                            <tb href="#" class="link-author"><%= post_comment.user.name %></tb>
+
+                                                            <tb class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></tb>
+
+
+                                                        <tb class="comment-entry"><%= post_comment.comment %></tb>
+
+                                        <% end %>
+                                        </table>
+
+
+<div class="info">
+         <div class="container">
+          <h1>info</h1>
+          </div>
+          </div>
+                <thead>
+                       <tr class="table-info">
+                         <th scope="col">user</th>
+                         <th scope="col">day</th>
+                         <th scope="col">text</th>
+                         <th scope="col">comment count</th>
+                         <th scope="col">いいね</th>
+
+
+                       </tr>
+                     </thead>
+                                  <tbody>
+
+                                      <tr>
+                                          <td> <%= link_to @post.user.name, user_path(@post.user.id) %></td>
+                                          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+                                          <td><%= book.text %></td>
+                                          <td> <%= @post.text %></td>
+                                          <td>< <a href="#comments"><%= @post.post_comments.count %></a></td>
+                                          <td><% if @post.favorited_by?(current_user) %>
+
+                                              <%= link_to post_favorites_path(@post), method: :delete do %>
+                                                 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+
+                                                    <% else %>
+
+
+
+
+                                                                 <%= link_to post_favorites_path(@post), method: :post do %>
+                                                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+                                                    <% end %>
+
+                                          </td>
+                                      </tr>
+                                      <% end %>
+                                    </tbody>
+                                  </table>
+
+
+
+
+                      <table class="table table-striped">
+
+
+
+
+
+
+
+
+
+
+                                           </table>
+
+
+
+
+
+                                      <% if @post.user_id == current_user.id %>
+                                        <%= link_to "POST EDIT", edit_post_path(@post) %>
+                                        <% end %>
+
+
+                                          <% if @post.user_id == current_user.id %>
+                                          <p><%= link_to "Post Delete", post_path(@post.id), method: :delete %></p>
+                                            <% end %>
+
+
+
+
+
+                　<div class="name" >
+　　　　　　　　     <i class="fa fa-user"></i>By
+　　　　　　　　        <%= link_to @post.user.name, user_path(@post.user.id) %></li>
+                  　        　<% if @post == current_user %>
+                                <p><%= link_to "Post Edit", edit_post_path(@posts) %></p>
+                              <% end %>
+
+　　　　　　　                   <li>
+                                     <i class="fa fa-calendar"></i><%= @post.created_at.strftime('%Y/%m/%d') %>
+                                 </li>
+
+                                       <% if @post.favorited_by?(current_user) %>
+                                          <li>
+                                              <%= link_to post_favorites_path(@post), method: :delete do %>
+                                                 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+                                          </li>
+                                                    <% else %>
+
+                                                             <li>
+                                                                 <%= link_to post_favorites_path(@post), method: :post do %>
+                                                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+                                                    <% end %>
+
+                                                            </li>
+
+                　　　　                                      　　　　<li>
+                                                                    <i class="fa fa-comment"></i>
+                                                                        <a href="#comments"><%= @post.post_comments.count %></a>
+                                                                </li>
+
+
+
+                                                                    <div class="post-content-inner mt-20">
+                                                                       <p><%= @post.text %></p>
+                                                                    </div>
+
+                     </div>
+
+
+
+                                      <% if @post.user_id == current_user.id %>
+
+                                        <p><%= link_to "POST EDIT", edit_post_path(@post), class: 'btn btn-outline-red' %></p>
+                                        <% end %>
+
+
+                                          <% if @post.user_id == current_user.id %>
+                                          <p><%= link_to "Post Delete", post_path(@post.id), method: :delete %></p>
+                                            <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                              <div class="comment-list bt style-2" id="comments">
+                                                <div class="float-wrapper">
+                                                  <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+                                                </div>
+                                                <ol>
+                                             <% @post.post_comments.each do |post_comment| %>
+                                            <li class="comment">
+                                                <div class="comment-body bb">
+                                                    <div class="comment-avatar">
+                                                        <div class="avatar">
+                                                           <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %>
+
+
+                                                    <% if post_comment.user == current_user %>
+                                                      <div class="comment-delete">
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+                                                     </div>
+                                                    <% end %>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="comment-text">
+                                                        <div class="comment-author clearfix">
+                                                            <a href="#" class="link-author"><%= post_comment.user.name %></a>
+                                                            <span class="comment-meta">
+                                                            <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="comment-entry"><%= post_comment.comment %></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <% end %>
+                                                </ol>
+                                              </div>
+                                              <hr>
+
+
+
+
+
+
+    <div class="info">
+         <div class="container">
+          <h1>info</h1>
+          </div>
+          </div>
+          <table class="table table-striped">
+                <thead>
+                       <tr class="table-info">
+                         <th scope="col">user</th>
+                         <th scope="col">day</th>
+                         <th scope="col">text</th>
+                         <th scope="col">commentscount</th>
+                         <th scope="col">いいね</th>
+
+
+                       </tr>
+                     </thead>
+                                  <tbody>
+
+                                      <tr>
+                                        <tb><%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no-image.jpg", class:"mt-3 rounded-circle"; %></tb>
+                                          <td> <%= link_to @post.user.name, user_path(@post.user.id) %></td>
+                                          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+
+                                          <td> <%= @post.text %></td>
+                                          <td><a href="#comments"><%= @post.post_comments.count %></a></td>
+                                          <td><% if @post.favorited_by?(current_user) %>
+
+                                              <%= link_to post_favorites_path(@post), method: :delete do %>
+                                                 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+
+                                                    <% else %>
+
+
+
+
+                                                                 <%= link_to post_favorites_path(@post), method: :post do %>
+                                                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+                                                    <% end %>
+
+
+                                          </td>
+                                      </tr>
+
+                                    </tbody>
+
+
+                                                    <tb> <% if @post.user_id == current_user.id %>
+                                     <%= link_to "POST EDIT", edit_post_path(@post), class: 'btn-warning' %>
+                                        <% end %>
+</tb>
+                                                    <tb> <% if @post.user_id == current_user.id %>
+                                        <%= link_to "POST DELETE", post_path(@post.id), class: 'btn-danger' %>
+                                            <% end %>
+
+</tb>
+                                  </table>
+
+
+
+
+
+
+
+
+
+
+                                              <table class='table'>
+
+                                                  <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+
+                                             <p><% @post.post_comments.each do |post_comment| %>
+                                             <tr>
+
+                                             <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <tb><% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %><tb>
+                                                    </tr>
+                                                    <% end %>
+
+
+                                                            <tb href="#" class="link-author"><%= post_comment.user.name %></tb>
+
+                                                            <tb class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></tb>
+
+
+                                                        <tb class="comment-entry"><%= post_comment.comment %></tb>
+
+                                        <% end %>
+                                        </p>
+                                        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+                            <h3 class="section-title left">
+                              <span>Comment</span>
+                            </h3>
+                          </div>
+                <%= form_for [@post, @post_comment] do |f| %>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                        </div>
+                    </div>
+                    <%= f.submit "Send", class: "btn btn-lg btn-base-1 mt-20 pu" %>
+                <% end %>
+
+
+
+
+
+
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<div class="info">
+         <div class="container">
+          <h1>info</h1>
+          </div>
+          </div>
+                <thead>
+                       <tr class="table-info">
+                         <th scope="col">user</th>
+                         <th scope="col">day</th>
+                         <th scope="col">text</th>
+                         <th scope="col">comment count</th>
+                         <th scope="col">いいね</th>
+
+
+                       </tr>
+                     </thead>
+                                  <tbody>
+
+                                      <tr>
+                                          <td> <%= link_to @post.user.name, user_path(@post.user.id) %></td>
+                                          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+
+                                          <td> <%= @post.text %></td>
+                                          <td>< <a href="#comments"><%= @post.post_comments.count %></a></td>
+                                          <td><% if @post.favorited_by?(current_user) %>
+
+                                              <%= link_to post_favorites_path(@post), method: :delete do %>
+                                                 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+
+                                                    <% else %>
+
+
+
+
+                                                                 <%= link_to post_favorites_path(@post), method: :post do %>
+                                                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    <%= @post.favorites.count %> いいね
+                                                    <% end %>
+                                                    <% end %>
+
+                                          </td>
+                                      </tr>
+
+                                    </tbody>
+                                  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                              <div class="comment-list bt style-2" id="comments">
+                                                <div class="float-wrapper">
+                                                  <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+                                                </div>
+                                                <ol>
+                                                </div>
+                                                  <thead>
+                                                 <table class="table table-striped">
+
+
+                                                  <tr class="table-info">
+                                                           <th scope="col">user</th>
+                                                           <th scope="col">name</th>
+                                                           <th scope="col">cooment</th>
+                                                           <th scope="col">day</th>
+                                                           <th scope="col">delete</th>
+
+
+                                                         </tr>
+                                                       </thead>
+
+
+                                                       <tbody>
+
+                                      <tr>
+                                        <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+                                          <td> <a href="#" class="link-author"><%= post_comment.user.name %></a></td>
+                                          <td><%= post_comment.comment %></td>
+
+                                          <td><%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %></td>
+
+
+
+
+
+
+
+                                      </tr>
+
+                                    </tbody>
+
+
+                                                           <% @post.post_comments.each do |post_comment| %>
+
+
+                                                           <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %>
+
+
+                                                    <% if post_comment.user == current_user %>
+                                                      <div class="comment-delete">
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+                                                     </div>
+                                                    <% end %>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <
+                                                            <a href="#" class="link-author"><%= post_comment.user.name %></a>
+
+                                                            <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+
+
+                                                        <div class="comment-entry"><%= post_comment.comment %></div>
+
+
+
+
+<table class="table">
+ <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+    <thead>
+        <tr>
+            <th>user</th>
+            <th>user</th>
+            <th>cooment</th>
+            <th>day</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+                                                  <% @post.post_comments.each do |post_comment| %>
+
+                                                           <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+
+                                                    <% end %>
+
+
+
+
+                                                            <tb><a href="#" class="link-author"><%= post_comment.user.name %></a></tb>
+
+                                                            <tb><span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span><tb>
+                                                            </span>
+                                                        <
+                                                        <tb><div class="comment-entry"><%= post_comment.comment %></div><tb>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <% end %>
+                                                </ol>
+                                              </div>
+                                              <hr>
+
+
+
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+　　　　　　　　　 <div class="info">
+         <div class="container">
+
+          </div>
+          </div>
+              <table class="table table-striped">
+                <thead>
+                       <tr class="table-info">
+                         <th scope="col">user</th>
+                         <th scope="col">day</th>
+                         <th scope="col">text</th>
+                         <th scope="col">commentscount</th>
+                         <th scope="col">いいね</th>
+
+
+                       </tr>
+                     </thead>
+                                  <tbody>
+
+                                      <tr>
+
+                                                  <% @post.post_comments.each do |post_comment| %>
+
+                                                           <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+
+                                                    <% end %>
+
+
+
+
+                                                            <tb><a href="#" class="link-author"><%= post_comment.user.name %></a></tb>
+
+                                                            <tb><span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span><tb>
+                                                            </span>
+                                                        <
+                                                        <tb><div class="comment-entry"><%= post_comment.comment %></div><tb>
+                                      </tr>
+
+                                    </tbody>
+
+
+                                                    <tb> <% if @post.user_id == current_user.id %>
+                                     <%= link_to "POST EDIT", edit_post_path(@post), class: 'btn-warning' %>
+                                        <% end %>
+</tb>
+                                                    <tb> <% if @post.user_id == current_user.id %>
+                                        <%= link_to "POST DELETE", post_path(@post.id), class: 'btn-danger' %>
+                                            <% end %>
+
+</tb>
+                                  </table>
+
+
+                                                  <% @post.post_comments.each do |post_comment| %>
+
+                                                           <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+
+                                                    <% end %>
+
+
+
+
+                                                            <tb><a href="#" class="link-author"><%= post_comment.user.name %></a></tb>
+
+                                                            <tb><span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span><tb>
+                                                            </span>
+                                                        <
+                                                        <tb><div class="comment-entry"><%= post_comment.comment %></div><tb>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <% end %>
+                                                </ol>
+                                              </div>
+                                              <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="profile-container">-->
+<!--  <h3 class="profile-name"><%#= @user.name %></h3ships_path(user.id), method: :post, class: "btn btn-success" %>-->
+
+<!-- <%#= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image.jpg"  %>-->
+
+<!--</div>-->
+
+
+
+<!--<div class="card-list-containar py-5">-->
+
+<!--<%#= render 'posts/list', posts: @posts %>-->
+
+
+
+<!--</div>-->
+
+<!--<%# @users.each do |user| %>-->
+<!--    <%#= user.name %>-->
+<!--    <%#= user.email %>-->
+<!--    <%# user.posts.each do |post| %>-->
+<!--        <%#= post.text %>-->
+<!--    <%# end %>-->
+<!--<%# end %>-->
+
+<!--<%# users.posts.each do |user| %>-->
+<!--    <%#= user.post.post_image_id %>-->
+
+
+<!--<%# end %>-->
+
+
+
+ <!--# @usersのイメ-ジ-->
+ <!-- @users = [-->
+ <!--   {id:1, email: "XXXX", name: "XXXX"},-->
+ <!--   {id:2, email: "XXXX", name: "XXXX"},-->
+ <!--   {id:3, email: "XXXX", name: "XXXX"},-->
+ <!-- ]-->
+
+ <!-- user.posts = [-->
+ <!--     {id:1, text: "XXXX", post_image_id: "XXX"},-->
+ <!--     {id:2, text: "XXXX", post_image_id: "XXX"},-->
+ <!--     {id:3, text: "XXXX", post_image_id: "XXX"},-->
+ <!-- ]-->
+
+  <!--user = {id:1, email: "test@gmail.com", name: "XXXX"}-->
+  <!--user[:email] = test@gmail.com-->
+  <!--user.email = test@gmail.com-->
+
+
+
+
+
+
+
+   <div class="cooment">
+
+    <div class="container">
+ <h2 class="comment-count"><%= @post.post_comments.count %> comments</h2>
+ </div>
+ </div>
+  <table class="table table-striped">
+    <thead>
+      <tr class="table-info">
+            <th>user</th>
+            <th>user</th>
+            <th>cooment</th>
+            <th>day</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+                                                  <% @post.post_comments.each do |post_comment| %>
+
+                                                           <tb><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg" %></tb>
+
+
+                                                    <% if post_comment.user == current_user %>
+
+                                                    <%= link_to "Dlete", post_post_comment_path(post_comment.post.id, post_comment), method: :delete %>
+
+                                                    <% end %>
+
+
+
+
+                                                            <tb><a href="#" class="link-author"><%= post_comment.user.name %></a></tb>
+
+                                                            <tb><span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span><tb>
+                                                            </span>
+
+                                                        <tb><div class="comment-entry"><%= post_comment.comment %></div><tb>
+
+                                            </li>
+                                        <% end %>
+
+
+
+
+
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+
+　　　　　　　　　 <div class="info">
+         <div class="container">
+
+          </div>
+          </div>
+              <table class="table table-striped">
+                <thead>
+                       <tr class="table-info">
+                         <th scope="col">user</th>
+                         <th scope="col">day</th>
+                         <th scope="col">text</th>
+                         <th scope="col">commentscount</th>
+                         <th scope="col">いいね</th>
+
+
+                       </tr>
+                     </thead>
+                                  <tbody>
+
+
+
+
+
+<% if @model == '1' %>
+  <h3>Users search for "<%= @keyword %>"</h3>
+  <%= render 'users/info' %>
+
+  <table>
+<% @users.each do |user| %>
+
+<tr>
+  <th><%= user.name %></th>
+    <th>follows
+
+
+      <%= link_to user_followers_path(user) do %>
+      <%= user.followers.count %>
+      <% end %>
+
+    </th>
+
+
+    <th>
+      followers
+
+      <%= link_to user_followed_path(user) do %>
+      <%= user.followings.count %>
+      <% end %>
+    </th>
+
+    <th>
+      <% if user != current_user %>
+
+        <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :delete, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :post, class: "btn btn-success" %>
+        <% end %>
+         <% end %>
+
+
+
+    </th>
+  </tr>
+   <% end %>
+
+</table>
+
+
+<% elsif @model == '2' %>
+  <h3>Posts search for "<%= @keyword %>"</h3>
+  <%= render 'posts/list', posts: @posts %>
+<% end %>
+
+
+
+
+
+<section class="slice sct-color-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12-center">
+
+        <div class="row-content"style="text-align: center">
+          <div class="col-md-6 col-md-offset-3 post_image_form-center">
+            <div class="section-title-wrapper style-1 v1">
+              <h3 class="section-title section-title-sm left">
+                <h1>POSTFORM</h1>
+              </h3>
+            </div>
+
+            <% if @post.errors.any? %>
+            <%= @post.errors.count %>件のエラーが発生しました
+            <% @post.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+          <% end %>
+
+          <%= form_with model: @post, local:true do |f| %>
+               <h4>ADDRESS📍</h4>
+               <%= f.text_field :address, placeholder: "住所" %>
+                <h4>PHOTO</h4>
+                <%= f.attachment_field :post_images_images, multiple: true, :onchange => 'upload' %>
+                <h4>TEXT🗒</h4>
+                <%= f.text_area :text %>
+                <%= f.submit 'Post' %>
+              <% end %>
+
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <script>
+        
+        
+        
+        
+        
+        
+        <div class="container">
+  <div class="row">
+      <div class="col-md-12 posts_container">
+        <div class="post-item">
+  　 <div class="post-meta-top">
+    　 <div class="post-image">
+    　   <h1>EDIT POST</h1>
+    　       <% if @post.errors.any? %>
+              <%= @post.errors.count %>件のエラーが発生しました
+              <% @post.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            <% end %>
+
+           <% @post.post_images.each do |image| %>
+            <%= attachment_image_tag image, :image, :fill, 300, 300, class: "default_image" %>
+           <% end %>
+  </div>
+     </div>
+       </div>
+       </div>
+      
+
+
+
+<div class="row my-3">
+<table class="table table-striped">
+  <thead>
+    <tr class="table-info">
+      <th scope="col2">user</th>
+      <th scope="col2">text</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+        <td><%= link_to @post.user.name, user_path(@post.user.id) %>
+                    </a></li></td>
+        <td><%= @post.text %></td>
+
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+</div>
+
+
+
+<div class="row my-3 mx-auto">
+  <%= form_with model: @post, local: true do |f| %>
+     <h4>TEXT</h4>
+        <%= f.text_field :text,size:50 %>
+            <h4>POST IMAGE</h4>
+                <%= f.attachment_field :post_images_images, multiple: true %>
+                    <%= f.submit '保存' %>
+    <% end %>
+</div>
+
+</div>
+  
+
+
+
+
+
+
