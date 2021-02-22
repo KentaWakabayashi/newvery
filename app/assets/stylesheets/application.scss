@@ -36,7 +36,7 @@ textarea {
  background-size: cover;
  background-position: center center;
  width:100%;                                            /* 横幅のサイズを指定    */
- height:700px;
+ min-height:100vh;
 
 
 }
@@ -47,7 +47,7 @@ textarea {
  background-size: cover;
  background-position: center center;
  width:100%;                                            /* 横幅のサイズを指定    */
- height:700px;
+ min-height:100vh;
 
 
 }

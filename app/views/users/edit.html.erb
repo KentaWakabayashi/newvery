@@ -1,13 +1,28 @@
-<h2>Profile edit</h2>
+<div class="newpage">
+  <div class="container">
+    <div class="row">
+      <div class="section-title-wrapper style-1 v1 mx-auto my-5" >
+        <h3 class="section-title section-title-sm left">
+            <div class="col-md-6 col-md-offset-3 post_image_form-center" >
+                <h1>Profile Edit</h1>
+        </h3>
 <%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%>
-  <label for="inputIntroduction">Introduction</label>
-  <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction"%>
+    <h4>Profile image</h4>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no-image.jpg", class:"mt-3 rounded-circle"%>
+    <h4>Name</h4>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name",size:50 %>
+    <h4>Introduction</h4>
+    <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction",size:50 %>
 
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no-image.jpg"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      <h4>Photo select</h4>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+    <%= f.submit 'Post' %>
+ <% end %>
+          </div>
+        </div>
+     </div>
+     <%= render "layouts/footer" %>
+  </div>
+</div>
 
-  <%= f.submit "Save" %>
-<% end %>
+

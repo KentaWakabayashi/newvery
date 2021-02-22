@@ -4,10 +4,12 @@
 <!--render _list.html -->
   <%= render 'posts/list', posts: @posts %>
 
+<div class="row justify-content-center">
+<%= paginate @posts %>
+</div>
 
 
- <%= paginate @posts %>
-
+<%= render "layouts/footer" %>
 
 </div>
 

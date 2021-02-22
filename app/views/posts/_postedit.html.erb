@@ -1,0 +1,89 @@
+<div class="container" >
+  <div class="post_pic" >
+
+
+
+
+<div id="carouselExampleControls" class="carousel slide my-4" data-ride="carousel" data-interval="false">
+  <div class="carousel-inner" style="text-align: center">
+
+
+     <% @post.post_images.first(1).each do |image| %>
+       <div class="carousel-item active">
+       <%= attachment_image_tag image, :image, :fill, 500, 400, class: "carousel_image" %>
+
+       </div>
+       <% end %>
+
+      <% @post.post_images.drop(1).each do |image| %>
+    <div class="carousel-item">
+       <%= attachment_image_tag image, :image, :fill, 500, 400, class: "carousel_image" %>
+
+       </div>
+       <% end %>
+
+
+
+
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-botton-custom">&lt;</span>
+    <!--<span class="carousel-control-prev-icon" aria-hidden="false"></span>-->
+    <!--<span class="sr-only">Previous</span>-->
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-botton-custom">&gt;</span>
+    <!--<span class="carousel-control-next-icon" aria-hidden="false"></span>-->
+    <!--<span class="sr-only">Next</span>-->
+  </a>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="info">
+  <div class="container my-4">
+    <div class="row">
+  </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr class="table-info">
+     <th scope="col">user</th>
+     <th scope="col">name</th>
+     <th scope="col">day</th>
+     <th scope="col">text</th>
+     <th scope="col">commentscount</th>
+     <th scope="col">いいね</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @post.user, :profile_image, :fill, 70, 70, fallback: "no-image.jpg", class:"mt-3 rounded-circle"; %></td>
+      <td> <%= link_to @post.user.name, user_path(@post.user.id) %></td>
+      <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+      <td> <%= @post.text %></td>
+      <td><a href="#comments"><%= @post.post_comments.count %></a></td>
+      <td>
+        <% if @post.favorited_by?(current_user) %>
+          <%= link_to post_favorites_path(@post), method: :delete do %>
+           <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @post.favorites.count %> いいね
+          <% end %>
+        <% else %>
+          <%= link_to post_favorites_path(@post), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @post.favorites.count %> いいね
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<td>
+    <% if @post.user_id == current_user.id %>
+      <%= link_to "POST DELETE", post_path(@post.id), method: :delete, class: 'btn-danger' %>
+    <% end %>
+</td>
+</div>
+</div>

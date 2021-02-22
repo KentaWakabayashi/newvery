@@ -7,7 +7,7 @@
  background-position: center center;
  background-image: url("top3.jpg");
  width:100%;                                            /* 横幅のサイズを指定    */
- height:700px;                                          /* 縦幅のサイズを指定    */
+ min-height:100vh;                                          /* 縦幅のサイズを指定    */
 
 }
 .h1{
@@ -22,6 +22,6 @@
  background-position: center center;
  background-image: url("new.jpg");
  width:100%;                                            /* 横幅のサイズを指定    */
- height:700px;                                          /* 縦幅のサイズを指定    */
+ min-height:100vh;                                          /* 縦幅のサイズを指定    */
 
 }

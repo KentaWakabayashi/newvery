@@ -3,8 +3,8 @@
     <th>follows</th>
     <th>
 
-      <%= link_to user_followers_path(@user) do %>
-      <%= @user.followers.count %>
+      <%= link_to user_followings_path(@user) do %>
+      <%= @user.followings.count %>
       <% end %>
 
     </th>
@@ -12,8 +12,8 @@
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to user_followed_path(@user) do %>
-      <%= @user.followings.count %>
+      <%= link_to user_followers_path(@user) do %>
+      <%= @user.followers.count %>
       <% end %>
     </th>
   </tr>

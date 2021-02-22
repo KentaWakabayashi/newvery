@@ -45,3 +45,14 @@ background-color:white;
 .table-info{
     background-color: white;
 }
+
+
+.newpage{
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+ background-image: url("newpage.jpg");
+ width:100%;                                            /* 横幅のサイズを指定    */
+ min-height:100vh;                                          /* 縦幅のサイズを指定    */
+
+}

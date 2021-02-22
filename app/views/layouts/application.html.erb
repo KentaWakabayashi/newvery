@@ -23,34 +23,29 @@
 
 
 
-            <li>
-              <%= link_to posts_path do %>
-                <span class="far fa-images nav-link text-dark" aria-hidden="true"> </span>
-              <% end %>
 
-            <li>
-              <%= link_to top_about_path do%>
-                <span class="fas fa-link nav-link text-dark" aria-hidden="true"> </span>
+              <%= link_to posts_path do %>
+                <span class="fas fa-images nav-link text-dark" aria-hidden="true">POST</span>
 
               <% end %>
             </li>
 
             <li>
               <%= link_to new_post_path do%>
-                <span class="fas fa-camera-retro nav-link text-dark" aria-hidden="true"> </span>
+                <span class="fas fa-camera-retro nav-link text-dark" aria-hidden="true">NEW</span>
               <% end %>
             </li>
 
             <li>
               <%= link_to user_path(current_user.id) do %>
-                <span class="fas fa-user nav-link text-dark" aria-hidden="true"> </span>
+                <span class="fas fa-user nav-link text-dark" aria-hidden="true">MYPAGE</span>
               <% end %>
             </li>
 
 
             <li>
               <%= link_to destroy_user_session_path, method: :delete do%>
-                <span class="fas fa-sign-out-alt nav-link text-dark" aria-hidden="true"> </span>
+                <span class="fas fa-sign-out-alt nav-link text-dark" aria-hidden="true">LOGOUT</span>
               <% end %>
               </li>
 
@@ -96,15 +91,6 @@
     <%= yield %>
     </body>
 
-    <footer>
-
-        <div class='row-center'>
-           <div class='col-xs-6 col-xs-offset-9'>
-               <p>CopyRight Infratop.inc</p>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </html>
 
