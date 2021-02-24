@@ -1,5 +1,5 @@
 <div class="inview" >
-<div class="container" >
+<div class="container inview" >
    <div class="row-center"style="color: white; " >
      <div class="col-md-6 mx-auto" >
 
@@ -8,12 +8,12 @@
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",size:50 %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",size:30 %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password",size:50 %>
+    <%= f.password_field :password, autocomplete: "current-password",size:30 %>
   </div>
 
   <% if devise_mapping.rememberable? %>

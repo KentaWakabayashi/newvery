@@ -35,8 +35,9 @@ textarea {
  background-repeat: no-repeat;
  background-size: cover;
  background-position: center center;
- width:100%;                                            /* 横幅のサイズを指定    */
- min-height:100vh;
+ max-width: 100%;                                            /* 横幅のサイズを指定    */
+ min-height: 100vh;
+ background-attachment: fixed;
 
 
 }
@@ -46,8 +47,9 @@ textarea {
  background-repeat: no-repeat;
  background-size: cover;
  background-position: center center;
- width:100%;                                            /* 横幅のサイズを指定    */
- min-height:100vh;
+ max-width: 100%;                                            /* 横幅のサイズを指定    */
+ min-height: 100vh;
+ background-attachment: fixed;
 
 
 }
@@ -57,11 +59,11 @@ textarea {
 
 
 }
-.profile-image{
-display:flex;
-justify-content: flex-start;
-align-items: flex-end;
-}
+// .profile-image{
+// display:flex;
+// justify-content: flex-start;
+// align-items: flex-end;
+// }
 
 .profile-text{
  justify-content: flex-end;

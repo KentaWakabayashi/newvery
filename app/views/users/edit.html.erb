@@ -10,9 +10,9 @@
     <h4>Profile image</h4>
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no-image.jpg", class:"mt-3 rounded-circle"%>
     <h4>Name</h4>
-    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name",size:50 %>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name",size:40 %>
     <h4>Introduction</h4>
-    <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction",size:50 %>
+    <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction",size:40 %>
 
       <h4>Photo select</h4>
     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>

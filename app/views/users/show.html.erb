@@ -1,95 +1,43 @@
-<div class="profile-container-center">
+<div class="profile container">
+   
     <%= render 'search/form' %>
-       <div class="card w-50 mx-auto mt-4 shadow-lg">
-
-          <div class="profile-image">
-              <div class="image-pic">
-             <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  format: 'jpeg', fallback: "no-image.jpg", class:"mt-3 rounded-circle" %>
-
-            </div>
-
-
-              <div class="profile-text">
-                <h1>
-
-
-
-
-                    <font size="7"><%= @user.name %></h3ships_path(user.id), method: :post, class: "btn btn-success" %></font>
-
-                    </h1>
-
-                    <p>Me：<%= @user.introduction %></p>
-
-
-
-
-
-
-
-
-                    <%= render 'users/info', users: @users %>
-
-
-                     <% if @user == current_user %>
-                             <p></h3><%= link_to "Profile Edit", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
-                      <% end %>
-
-
-                    </div>
-                    </div>
-
+        <div class="my-5" style="width: 100%; ">
+           <div class="row">
+               <div class="col-6 text-right">
+                   <%= attachment_image_tag @user, :profile_image, :fill, 150, 150,  format: 'jpeg', fallback: "no-image.jpg", class:"mt-3 rounded-circle" %>
+              </div>
+                <div class="col-6">
+                     <h1>
+                        <font size="6"><%= @user.name %></h3ships_path(user.id), method: :post, class: "btn btn-success" %></font>
+                     </h1>
+                         <p>Me：<%= @user.introduction %></p>
+                            <%= render 'users/info', users: @users %>
+                                <% if @user == current_user %>
+                                    <p></h3><%= link_to "Profile Edit", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
+                                <% end %>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="card-list-containar py-5">-->
-<!--<%#= render 'users/info', users: @users %>-->
-<!--</div>-->
-
-
-
-
-
-
+            </div>
+        </div>
 
 
 
 
 
 <div class="card-list-containar container-fluid"style="margin-top:20px;">
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="" style="margin-bottom: 15px;">
-
-   <!--render _list.html -->
- <%= render 'users/list', posts: @posts %>
-
-
+    <div class="row">
+        <div class="col-md-12">
+            <div class="" style="margin-bottom: 15px;">
+                <%= render 'users/list', posts: @posts %>
+            </div>
+         </div>
+     </div>
  </div>
- </div>
- </div>
- </div>
-
-
-
 
 <div class="row justify-content-center">
- <%= paginate @posts %>
- </div>
-
- <%= render "layouts/footer" %>
- </div>
+     <%= paginate @posts %>
+</div>
+    <%= render "layouts/footer" %>
+</div>
 
 
 
