@@ -1,33 +1,32 @@
-
 <div class="top-back-image">
-<div class="container" >
-
-  <div class="row justify-content-center"style="padding-top: 300px; color: gray; ";>
-
+  <div class="container" >
+    <div class="row justify-content-center"style="padding-top: 300px; color: gray; ";>
       <h1>
-          <font size="7">NEWVERY</font>
-          </h1>
+        <font size="7">NEWVERY</font>
+      </h1>
      </div>
-     <div class="row" >
-         <div class="col-1" >
-             <%= link_to "SIGNUP",new_user_registration_path, class: "btn btn-outline-light" %>
-             </div>
-             <div class="col-3" >
-                 <%= link_to "LOGIN",new_user_session_path, class: "btn btn-outline-light" %>
-             </div>
+       <div class="row" >
+          <div class="col-1" >
+            <%= link_to "SIGNUP",new_user_registration_path, class: "btn btn-outline-light" %>
+          </div>
+          </div>
 
-         </div>
-         <div class="row" >
-         <div class="col-2 my-3" >
-
-                 <%= link_to 'GEST', tops_guest_sign_in_path, method: :post, class: "btn btn-outline-light"%>
+          <div class="row" >
+             <div class="col-3 my-2" >
+                <%= link_to "LOGIN",new_user_session_path, class: "btn btn-outline-light" %>
              </div>
+          </div>
 
+
+
+           <div class="row" >
+              <div class="col-5 my-5" >
+                <%= link_to 'GEST', tops_guest_sign_in_path, method: :post, class: "btn btn-outline-light"%>
+              </div>
+          </div>
+  </div>
+   <%= render "layouts/footer" %>
 </div>
-
- </div>
- <%= render "layouts/footer" %>
- </div>
 
 
 

@@ -1,6 +1,7 @@
 <div class="container">
     <h1>EDIT POST</h1>
         <div class="row my-3 mx-auto">
+            <div class="col">
           <% if @post.errors.any? %>
              <%= @post.errors.count %>件のエラーが発生しました
              <% @post.errors.full_messages.each do |message| %>
@@ -10,11 +11,12 @@
 
           <%= form_with model: @post, local: true do |f| %>
             <h4>TEXT</h4>
-            <%= f.text_field :text,size:40 %>
+            <%= f.text_field :text,size:30 %>
             <h4>POST IMAGE</h4>
             <%= f.attachment_field :post_images_images, multiple: true %>
             <%= f.submit '保存' %>
           <% end %>
+        </div>
         </div>
 
 

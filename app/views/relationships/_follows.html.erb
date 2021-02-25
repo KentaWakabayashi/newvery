@@ -1,17 +1,16 @@
 
 
 
-<table class='table'>
 
-  <% users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
-      <td><%= user.name %></td>
-      <td><p>フォロー数：<%= user.followings.count %></p></td>
-      <td><p>フォロワー数：<%= user.followers.count %></p></td>
-      <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
-    </tr>
-  <% end %>
-</table>
+<% users.each do |user| %>
+<div class="row border-bottom my-5　d-flex align-items-end">
+  <div class="col-md-2 col-12"><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></div>
+  <div class="col-md-2 col-12"><%= user.name %></div>
+  <div class="col-md-3 col-12">フォロー数：<%= user.followings.count %></div>
+  <div class="col-md-4 col-12">フォロワー数：<%= user.followers.count %></div>
+  <div class="col-md-1 col-12"><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></div>
+</div>
+<% end %>
+
 
 

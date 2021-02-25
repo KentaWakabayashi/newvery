@@ -1,7 +1,7 @@
 <div class="inview2" >
 <div class="container" >
    <div class="row-center"style="color: white; " >
-     <div class="col-md-6 mx-auto" >
+     <div class="col-md-3 mx-auto" >
 
 <h2>SING UP</h2>
 
@@ -10,12 +10,12 @@
 
   <div class="field">
     <%= f.label :Name %><br />
-    <%= f.text_field :name, autofocus: true,size:50 %>
+    <%= f.text_field :name, autofocus: true,size:30 %>
   </div>
 
   <div class="field">
     <%= f.label :Email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",size:50 %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",size:30 %>
   </div>
 
   <div class="field">
@@ -23,12 +23,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password",size:50 %>
+    <%= f.password_field :password, autocomplete: "new-password",size:30 %>
   </div>
 
   <div class="field">
     <%= f.label :Password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",size:50 %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",size:30 %>
   </div>
 
   <div class="actions">

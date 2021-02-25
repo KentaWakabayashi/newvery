@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body {
+  background-color: bg-white; }
+
+h1 {
+  font-family: "cursive"; }
+
+h4 {
+  font-family: "Lucida Console"; }
+
+.card-list-containar {
+  background-color: white; }
+
+.sct-color-1 {
+  background-color: white;
+  width: auto;
+  height: auto; }
+
+.carousel-botton-custom {
+  color: white;
+  display: inline-block;
+  background-color: gray;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  font-weight: bold; }
+
+.table-info {
+  background-color: white; }
+
+.newpage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: image-url("newpage.jpg");
+  width: 100%;
+  /* 横幅のサイズを指定    */
+  min-height: 100vh;
+  /* 縦幅のサイズを指定    */ }
+
+@media screen and (max-width: 640px) {
+  .table-striped {
+    width: 80%; }
+
+  .table-striped thead {
+    display: none; }
+
+  .table-info tr {
+    width: 100%; } }
+
+/*# sourceMappingURL=posts.css.map */
