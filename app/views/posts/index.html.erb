@@ -1,16 +1,11 @@
 <div class="card-list-containar py-5">
   <%= render 'search/form' %>
-
-<!--render _list.html -->
-  <%= render 'posts/list', posts: @posts %>
-
-<div class="row justify-content-center">
-<%= paginate @posts %>
-</div>
-
-
-<%= render "layouts/footer" %>
-
+    <!--render _list.html -->
+      <%= render 'posts/list', posts: @posts %>
+        <div class="row justify-content-center">
+          <%= paginate @posts %>
+        </div>
+          <%= render "layouts/footer" %>
 </div>
 
 
